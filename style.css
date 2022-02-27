@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+#toast{
+    margin: auto;
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    transition: all 2s ease;
+}
+.toast{
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 5px 5px rgba(0,0 ,0 ,0.3 );
+    border-left: 5px solid;
+    margin-bottom: 12px;
+    
+}
+.toast-icon,.toast-close{
+    font-size: 20px;
+    padding:2px;
+    margin: 0 6px;
+}
+.toast-icon{
+    border-radius: 50%;
+}
+.toast-body{
+    padding: 12px 0;
+    line-height: 25px;
+}
+.toast--success{
+    border-color: green;
+}
+.toast--error{
+    border-color: red;
+}
+.toast--success .toast-icon{
+    color: white;
+    background-color: green;
+}
+.toast--error .toast-icon{
+    color: white;
+    background-color: red;
+    font-size: 24px;
+
+}
+@keyframes show{
+    0%{
+        opacity: 0;
+        transform: translateX(calc(100% - 32px));
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+}
+@keyframes fade{
+    100%{
+        opacity: 0;
+
+    }
+}
+.btn{
+    padding: 16px;
+}
+.btnBlock{
+    display: flex;
+}
+.btn-success{
+    background-color: green;
+    color: white;
+}
+
+.btn-error{
+    background-color: red;
+    color: white;
+
+}
+/* <i class="fal fa-exclamation"></i> */

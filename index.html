@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="toast">
+        <!-- <div class="toast toast--success">
+           
+        </div> -->
+        <!-- <div class="toast toast--error">
+            <div class="toast-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="toast-body">
+                <h3 class="toast-title">Thành công!</h3>
+                <p class="toast-desr">Bạn đã đăng ký thành công tài khoản tại F8.</p>
+            </div>
+            <div class="toast-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div> -->
+    </div>
+    <div class="btnBlock">
+        <div class="btn btn-success">Success</div>
+        <div class="btn btn-error">Error</div>
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document)
+            const $$ = document.querySelectorAll.bind(document)
+        function toast({title='',massage='',type='',duration=3000}){
+            
+            const icons = {
+                success:'fas fa-check',
+                error:'fal fa-exclamation'
+            }
+            const icon = icons[type]
+            const main = $('#toast')
+            if(main){
+                const toastElement = document.createElement('div')
+                const delay = (duration/1000).toFixed(2)
+                toastElement.style.animation = `show .3s ease,fade 1s linear ${delay}s forwards`
+                toastElement.classList.add('toast',`toast--${type}`)
+                toastElement.innerHTML = `
+                <div class="toast-icon">
+                    <i class="${icon}"></i>
+                </div>
+                <div class="toast-body">
+                    <h3 class="toast-title">${title}</h3>
+                    <p class="toast-desr">${massage}</p>
+                </div>
+                <div class="toast-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                `
+                main.appendChild(toastElement)
+                setTimeout(function(){ 
+                main.removeChild(toastElement)
+
+                },duration + 1000)
+            }
+
+        }
+        $('.btn-success').addEventListener('click',function(){
+            toast({
+            title:"Thành công!",
+            massage:'Bạn đã đăng ký thành công tài khoản tại F8.',
+            type:'success',
+            duration:1000
+        })
+        })
+        $('.btn-error').addEventListener('click',function(){
+            toast({
+            title:"Thất bại!",
+            massage:'Có lỗi xảy ra, vui lòng liên hệ quản trị viên.',
+            type:'error',
+            duration:3000
+        })
+        })
+    </script>
+</body>
+</html>
